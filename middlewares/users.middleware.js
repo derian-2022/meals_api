@@ -1,7 +1,6 @@
 const User = require('../models/user.models');
 const AppError = require('../utils/appError');
 const catchAsync = require('./../utils/catchAsync');
-const catchAsync = require('./../utils/catchAsync');
 
 
 exports.validIfExistUser = catchAsync(async (req, res, next) => {
@@ -16,9 +15,25 @@ exports.validIfExistUser = catchAsync(async (req, res, next) => {
 
 
     if(!user) {
-        return  next(new AppError('User not found', 404))
+        return  next(new AppError('User {id} not found', 404))
     }
 
     req.user = user;
+    next();
+})
+
+
+exports.validIfExistEmail = catchAsync(async (req, res, next) => {
+    const { email } = req.body;
+
+    const user = await User.findOne({
+        where: {
+            email,
+        }
+    })
+
+    if(user) {
+        return  next(new AppError('The Email Already Exists in the Database', 400))
+    }
     next();
 })

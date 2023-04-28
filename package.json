@@ -1,7 +1,7 @@
 {
   "name": "proyec_final_app_meals",
   "version": "1.0.0",
-  "description": "Colombia",
+  "description": "Colombia dv",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,7 +10,7 @@
     "debug": "ndb server.js"
   },
   "keywords": [],
-  "author": "Derian Augusto AB",
+  "author": "Derian Augusto",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",

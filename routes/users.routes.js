@@ -1,14 +1,24 @@
 const express = require('express');
 
 const userControllers = require('../controllers/user.controller');
-const validationMiddleware = require('../middlewares/validations.middleware');
 
+const validationMiddleware = require('../middlewares/validations.middleware');
+const authMiddleware = require('../middlewares/auth.Middleware ');
+const userMiddleware = require('../middlewares/users.middleware');
 
 const router = express.Router();
 
 router
-  .post('/signup', validationMiddleware.createUserValidation, userControllers.createUser)
+  .post(
+    '/signup',
+    validationMiddleware.createUserValidation,
+    userMiddleware.validIfExistEmail,
+    userControllers.createUser
+  )
+
   .post('/login', userControllers.loginUser);
+
+router.use(authMiddleware.protect);
 
 router.get(
   '/orders',
@@ -17,8 +27,14 @@ router.get(
 
 router
   .route('/:id')
-  .patch(userControllers.updateUser)
-  .delete(userControllers.deleteUser);
+  .patch(
+    userMiddleware.validIfExistUser,
+    userControllers.updateUser
+  )
+  .delete(
+    userMiddleware.validIfExistUser,
+    userControllers.deleteUser
+  );
 
 router.get(
   '/orders/:id',

@@ -1,1 +1,1 @@
-"Proyecto final Aplicacion full de MEALS en grupo de Node.js completa back-end and front-end"
+"Proyecto final Aplicacion full de MEALS de Node.js completa back-end pronto front-end"

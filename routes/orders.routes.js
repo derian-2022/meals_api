@@ -1,10 +1,10 @@
 const express = require('express')
 
 const ordersControllers = require('../controllers/orders.controller');
-
+const authMiddleware = require('../middlewares/auth.Middleware ');
 
 const router = express.Router();
-
+router.use(authMiddleware.protect)
 
 router.post('/', ordersControllers.createOrder);
 

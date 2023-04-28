@@ -1,10 +1,10 @@
 const express = require('express');
 const morgan = require('morgan');
-
-
 const AppError = require('./utils/appError');
-const globalErrorHandler = require('./controllers/error.controller');
 
+
+const globalErrorHandler = require('./controllers/error.controller');
+const cors = require('cors');
 
 
 
@@ -23,7 +23,7 @@ const ordersRoutes = require("./routes/orders.routes")
 
 
 app.use(express.json());
-
+app.use(cors());
 
 app.use('/api/v1/users', usersRoutes);
 app.use('/api/v1/restaurants', restaurantsRoutes);

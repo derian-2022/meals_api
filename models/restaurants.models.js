@@ -8,14 +8,13 @@ const Restaurants = db.define('restaurants', {
     autoIncrement: true,
     type: DataTypes.INTEGER,
   },
-  username: {
+  name: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  email: {
+  address: {
     type: DataTypes.STRING,
     allowNull: false,
-    unique: true,
   },
   status: {
     type: DataTypes.ENUM('active', 'disabled'),

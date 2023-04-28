@@ -8,33 +8,28 @@ const Orders = db.define('orders', {
     autoIncrement: true,
     type: DataTypes.INTEGER,
   },
-  username: {
-    type: DataTypes.STRING,
+  userId: {
+    type: DataTypes.INTEGER,
     allowNull: false,
   },
-  email: {
-    type: DataTypes.STRING,
+  mealId: {
+    type: DataTypes.INTEGER,
     allowNull: false,
-    unique: true,
-  },
-  password: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  role: {
-    type: DataTypes.ENUM('user', 'admin'),
-    allowNull: false,
-    defaultValue: 'user',
   },
   status: {
-    type: DataTypes.ENUM('active', 'cancelled', 'completed'),
+    type: DataTypes.ENUM(
+      'active',
+      'cancelled',
+      'completed'
+    ),
     allowNull: false,
     defaultValue: 'active',
   },
   quantity: {
     type: DataTypes.INTEGER,
+    allowNull: false,
   },
-  price: {
+  totalPrice: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },

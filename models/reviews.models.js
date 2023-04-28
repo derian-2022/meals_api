@@ -9,21 +9,25 @@ const Reviews = db.define('reviews', {
     type: DataTypes.INTEGER,
   },
   userId: {
-    type: DataTypes.STRING,
+    type: DataTypes.INTEGER,
     allowNull: false,
   },
-  email: {
+  comment: {
     type: DataTypes.STRING,
     allowNull: false,
-    unique: true,
   },
   restaurantId: {
-    type: DataTypes.STRING,
+    type: DataTypes.INTEGER,
     allowNull: false,
   },
   rating: {
     type: DataTypes.INTEGER,
     allowNull: false,
+  },
+  status: {
+    type: DataTypes.ENUM('active', 'deleted'),
+    allowNull: false,
+    defaultValue: 'active',
   },
 });
 
